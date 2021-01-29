@@ -7,13 +7,16 @@ namespace Keenan_XR
     public class XR_Movement : MonoBehaviour
     {
 
+        Camera camera;
+
         [SerializeField]
-        [Range(0, 10)]
+        [Range(0.0f, 1.0f)]
         float speed = 1;
 
         // Start is called before the first frame update
         void Start()
         {
+            camera = GetComponentInChildren<Camera>();
             XR_Input.leftJoyAxisDelegate += movePlayer;
         }
 
@@ -26,9 +29,8 @@ namespace Keenan_XR
         void movePlayer(Vector2 input)
         {
             print(input.x + ", " + input.y);
-            transform.Translate(transform.forward * input.x * speed);
-            transform.Translate(-transform.right * input.y * speed);
+            transform.Translate(camera.transform.forward * input.y * speed);
+            transform.Translate(camera.transform.right * input.x * speed);
         }
     }
-
 }
