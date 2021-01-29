@@ -6,31 +6,66 @@ namespace Keenan_XR
 {
     public class XR_Movement : MonoBehaviour
     {
-
-        Camera camera;
+        Camera cam;
 
         [SerializeField]
-        [Range(0.0f, 1.0f)]
+        [Range(0.0f, 10.0f)]
         float speed = 1;
+
+        CharacterController controller;
+
+        float gravity = -9.81f;
+        Vector3 velocity;
+
+        [SerializeField]
+        GameObject GroundCheck;
+        [SerializeField]
+        LayerMask groundMask;
+        bool isGrounded;
 
         // Start is called before the first frame update
         void Start()
         {
-            camera = GetComponentInChildren<Camera>();
+            cam = GetComponentInChildren<Camera>();
+            controller = GetComponent<CharacterController>();
             XR_Input.leftJoyAxisDelegate += movePlayer;
         }
 
         // Update is called once per frame
         void Update()
         {
+            isGrounded = Physics.CheckSphere(GroundCheck.transform.position, 1, groundMask, QueryTriggerInteraction.Ignore);
 
+            print(isGrounded);
+
+            //simulate gravity
+            if (!isGrounded)
+            {
+                velocity.y += gravity;
+                controller.Move(velocity * Time.deltaTime * Time.deltaTime);
+            }
+            else
+            {
+                //reset downward velocity
+                print("ground hit");
+                ResetVelocity();
+            }
         }
 
         void movePlayer(Vector2 input)
         {
             print(input.x + ", " + input.y);
-            transform.Translate(camera.transform.forward * input.y * speed);
-            transform.Translate(camera.transform.right * input.x * speed);
+            Vector3 move = (cam.transform.forward * input.y * speed) + (cam.transform.right * input.x * speed);
+
+            controller.Move(move * Time.deltaTime);
+            //transform.Translate(camera.transform.forward * input.y * speed);
+            //transform.Translate(camera.transform.right * input.x * speed);
+
+        }
+
+        void ResetVelocity()
+        {
+            velocity = new Vector3(0, 0, 0);
         }
     }
 }
