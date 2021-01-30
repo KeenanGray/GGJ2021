@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4591def29b03429e969ad04b59547e1, type: 3}
   m_Name: Stipple
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     outlineMaterial: {fileID: 2100000, guid: 33f9b9bc5572d46919c4b7ea75b06d92, type: 2}
 --- !u!114 &-3515691170166245324
@@ -27,7 +27,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
   m_Name: Toon Outline
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     passTag: Toon Outline
     Event: 300
@@ -54,6 +54,21 @@ MonoBehaviour:
       restoreCamera: 1
       offset: {x: 0, y: 0, z: 0, w: 0}
       cameraFieldOfView: 60
+--- !u!114 &-2142045251504919418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4591def29b03429e969ad04b59547e1, type: 3}
+  m_Name: Outline
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  settings:
+    outlineMaterial: {fileID: 2100000, guid: 40494121d7b654cc3b003dc4670e6fcb, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,7 +85,8 @@ MonoBehaviour:
   - {fileID: -3515691170166245324}
   - {fileID: 8284760251674631817}
   - {fileID: -7894345545926537057}
-  m_RendererFeatureMap: 347843f681c135cf899e57ea8d61f9729f90dc508da67192
+  - {fileID: -2142045251504919418}
+  m_RendererFeatureMap: 347843f681c135cf899e57ea8d61f9729f90dc508da6719286ac3c5b31ed45e2
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   shaders:
     blitPS: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}

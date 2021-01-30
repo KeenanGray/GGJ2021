@@ -43,10 +43,9 @@ void Stipple_float(float2 UV, float4 ScreenPosition, float BlurSize, float depth
     r.x *= 6.28318530718;//TWO_PI
     float2 cr = float2(sin(r.x),cos(r.x))*sqrt(r.y);
 
-    float freq = 10;
+    float freq = depth * 10;
     float amp = 5;
-    BlurSize = 2+(4*depth);
-    BlurSize =  5 + sin(freq+(_Time.y)) ;
+    BlurSize = BlurSize * sin(freq+(_Time.y)) ;
 
     uvSamples[1] = uv + cr * (float2(BlurSize,BlurSize) /_ScreenParams );
 
