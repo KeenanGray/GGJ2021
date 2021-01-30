@@ -15,10 +15,10 @@ TagManager:
   - 
   - Ground
   - PlayerCharacter
-  - HideFromHeadset
-  - 
-  - 
-  - 
+  - StippleLow
+  - StippleMed
+  - StippleHigh
+  - ToonOutline
   - 
   - 
   - 

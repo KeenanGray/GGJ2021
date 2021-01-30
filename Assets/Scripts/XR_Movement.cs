@@ -36,8 +36,6 @@ namespace Keenan_XR
         {
             isGrounded = Physics.CheckSphere(GroundCheck.transform.position, 1, groundMask, QueryTriggerInteraction.Ignore);
 
-            print(isGrounded);
-
             //simulate gravity
             if (!isGrounded)
             {
@@ -47,7 +45,6 @@ namespace Keenan_XR
             else
             {
                 //reset downward velocity
-                print("ground hit");
                 ResetVelocity();
             }
         }
@@ -58,9 +55,6 @@ namespace Keenan_XR
             Vector3 move = (cam.transform.forward * input.y * speed) + (cam.transform.right * input.x * speed);
 
             controller.Move(move * Time.deltaTime);
-            //transform.Translate(camera.transform.forward * input.y * speed);
-            //transform.Translate(camera.transform.right * input.x * speed);
-
         }
 
         void ResetVelocity()

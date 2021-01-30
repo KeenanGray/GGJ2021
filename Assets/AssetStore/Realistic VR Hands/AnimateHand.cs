@@ -19,7 +19,6 @@ namespace Keenan_XR
         // Update is called once per frame
         void Update()
         {
-            print("TRACKED POSE :: " + GetComponent<TrackedPoseDriver>().poseSource);
         }
 
         public void UpdateHandAnimation(TrackedPoseDriver.TrackedPose pose, bool trigger, bool grip)
